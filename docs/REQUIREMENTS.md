@@ -38,6 +38,12 @@ This document captures the initial requirements for the local CLI and web-based 
    - Provide configuration for model selection, safety filters, and per-session policy controls.
    - Log prompts/responses with privacy safeguards to feed analytics and debugging workflows.
 
+8. **Local Shell Utility**
+   - Offer a Python wrapper that executes commands inside a Bubblewrap-jailed `/bin/sh` rooted at a workspace directory.
+   - Allow callers to rely on native shell semantics (e.g., `cd`, environment exports) with state persisting between invocations.
+   - Return structured command results (exit code, standard output, standard error) for downstream consumers.
+   - Document Bubblewrap prerequisites (binary availability, user-namespace support) and cover the utility with automated tests.
+
 ## Non-Functional Requirements
 1. **Security**: Ensure shell isolation, sanitize user input, and protect stored credentials.
 2. **Reliability**: Aim for 99% session uptime and graceful recovery from infrastructure failures.
