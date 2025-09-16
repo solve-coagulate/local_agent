@@ -1,6 +1,6 @@
 # Delivery Plan
 
-This plan outlines the staged delivery of the local coding agent platform. Each phase builds on the previous one and should conclude with updated documentation and demos where applicable.
+This plan outlines the staged delivery of the local coding agent platform. Each phase builds on the previous one and should conclude with updated documentation and demos where applicable. Core technology choices—Bubblewrap sandboxing, Python 3.9+ services, SQLite storage, and OpenAI-powered agents—remain constant unless new evidence demands change.
 
 ## Phase 0 – Planning (Current)
 - Draft foundational documents (plan, requirements, design, and task board).
@@ -8,22 +8,22 @@ This plan outlines the staged delivery of the local coding agent platform. Each 
 - Validate that the repository structure supports future automation and testing.
 
 ## Phase 1 – Core Infrastructure
-- Implement repository bootstrapping scripts to provision a jailed shell workspace per session.
-- Build a session manager that tracks user identity, active workspaces, and lifecycle events.
+- Implement repository bootstrapping scripts to provision a Bubblewrap (`bwrap`) jailed shell workspace per session.
+- Build a session manager that tracks user identity, active workspaces, and lifecycle events with a SQLite-backed metadata store.
 - Establish persistent storage for session metadata and token usage logs.
-- Provide smoke tests verifying shell sandbox creation, command execution, and teardown.
+- Provide smoke tests verifying shell sandbox creation, command execution, teardown, and Python 3.9 compatibility for CLI utilities.
 
 ## Phase 2 – CLI Agent Experience
 - Develop the CLI interface for interacting with the coding agent.
-- Integrate the CLI with session management and token accounting services.
+- Integrate the CLI with session management and token accounting services using OpenAI agents for assistance workflows.
 - Support task selection from the shared task board and progress reporting back to the task system.
-- Add instrumentation for command latency, error rates, and shell resource utilization.
+- Add instrumentation for command latency, error rates, and shell resource utilization, backed by automated test coverage.
 
 ## Phase 3 – Web Application Experience
 - Build a web front-end that mirrors CLI functionality with an emphasis on usability.
-- Expose APIs for session management, shell interactions, and task state updates.
+- Expose APIs for session management, shell interactions, and task state updates, validating Python 3.9+ compatibility for shared services.
 - Provide authentication and authorization layers to ensure isolated workspaces per user.
-- Implement real-time feedback (web sockets or polling) for shell output streaming.
+- Implement real-time feedback (web sockets or polling) for shell output streaming with automated regression tests.
 
 ## Phase 4 – Advanced Capabilities
 - Offer collaboration features such as shared sessions or task hand-offs.

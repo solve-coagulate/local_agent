@@ -13,6 +13,12 @@ This repository documents the plan for building a local-first coding assistant t
 - [`docs/DESIGN.md`](docs/DESIGN.md) – module-level architecture and integration notes.
 - [`docs/TASKS.md`](docs/TASKS.md) – active and upcoming tasks.
 
+## Key Technology Decisions
+- **Sandboxing**: Bubblewrap (`bwrap`) provides jailed shell execution for all sessions.
+- **Runtime**: All Python services target version 3.9+ to maximize compatibility.
+- **Storage**: SQLite backs early metadata needs (sessions, tasks, analytics) before migrating to heavier stores.
+- **LLM Integration**: OpenAI-based agents coordinate coding assistance across CLI and web experiences.
+
 ## Contributing Guidance
 - Follow any instructions in `AGENTS.md` files before making changes.
 - Prefer incremental updates: keep documentation accurate as you implement functionality.
