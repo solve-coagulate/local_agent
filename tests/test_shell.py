@@ -1,12 +1,13 @@
 """Tests for the Bubblewrap-backed persistent shell utility."""
 
+import asyncio
 import shutil
 from pathlib import Path
 from uuid import uuid4
 
 import pytest
 
-from local_agent import Shell
+from local_agent import Shell, ShellResult
 
 
 @pytest.fixture()
@@ -100,3 +101,25 @@ def test_filesystem_changes_are_visible(shell: Shell) -> None:
     assert write.exit_code == 0
 
     assert (shell.root / "sample.txt").read_text(encoding="utf-8") == "data"
+
+
+def test_shell_supports_asyncio_usage(shell: Shell) -> None:
+    """The shell can be invoked from asyncio contexts via thread offloading."""
+
+    async def run_async() -> list[ShellResult]:
+        await asyncio.to_thread(shell.run, "mkdir async-dir")
+        await asyncio.to_thread(shell.run, "cd async-dir")
+
+        commands = [
+            asyncio.to_thread(shell.run, "pwd"),
+            asyncio.to_thread(shell.run, "printf 'ready'")
+        ]
+        return await asyncio.gather(*commands)
+
+    pwd_result, echo_result = asyncio.run(run_async())
+
+    assert pwd_result.exit_code == 0
+    assert pwd_result.stdout.strip() == "/async-dir"
+
+    assert echo_result.exit_code == 0
+    assert echo_result.stdout == "ready"

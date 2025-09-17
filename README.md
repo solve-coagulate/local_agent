@@ -37,6 +37,22 @@ Each invocation returns a `ShellResult` containing the exit code, standard outpu
 
 > **Prerequisite:** Install Bubblewrap (e.g., `sudo apt-get install bubblewrap`) and ensure the host allows user namespaces so the jail can be created.
 
+### Async Usage
+
+Web-facing services that rely on asyncio event loops can offload blocking shell invocations using `asyncio.to_thread` (Python 3.9+):
+
+```python
+import asyncio
+from local_agent import Shell
+
+async def run_in_session(shell: Shell) -> None:
+    await asyncio.to_thread(shell.run, "cd docs")
+    result = await asyncio.to_thread(shell.run, "pwd")
+    print(result.stdout.strip())
+```
+
+This pattern preserves shell state across commands while keeping the event loop responsive.
+
 ## Key Technology Decisions
 - **Sandboxing**: Bubblewrap (`bwrap`) provides jailed shell execution for all sessions.
 - **Runtime**: All Python services target version 3.9+ to maximize compatibility.

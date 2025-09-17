@@ -43,6 +43,7 @@ This document captures the initial requirements for the local CLI and web-based 
    - Allow callers to rely on native shell semantics (e.g., `cd`, environment exports) with state persisting between invocations.
    - Return structured command results (exit code, standard output, standard error) for downstream consumers.
    - Document Bubblewrap prerequisites (binary availability, user-namespace support) and cover the utility with automated tests.
+   - Support invocation from asynchronous web services by ensuring thread-safe execution for concurrent callers.
 
 ## Non-Functional Requirements
 1. **Security**: Ensure shell isolation, sanitize user input, and protect stored credentials.

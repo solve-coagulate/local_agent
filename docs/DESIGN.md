@@ -41,6 +41,7 @@ The system is composed of several services orchestrated around session managemen
 - **Responsibilities**: Provide a lightweight Python interface for issuing commands against the local workspace while respecting session boundaries.
 - **Key Interactions**: Serves as an adapter for higher-level services or tests that need shell semantics (e.g., `cd`, `pwd`) without bootstrapping the full session-management stack.
 - **Implementation Notes**: Launch a Bubblewrap-jailed `/bin/sh` per session (sharing processes by session identifier), stream commands through stdin, detect completion via unique sentinels, and expose structured results (`exit_code`, `stdout`, `stderr`).
+- **Concurrency**: Guard each session process with a lock so multiple threads or asyncio tasks can issue commands without corrupting state.
 - **Open Questions**: Do we need to stream output for long-running commands or surface a mechanism to terminate runaway processes?
 
 ### 5. Task Coordination Service
