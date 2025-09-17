@@ -10,7 +10,7 @@ This backlog highlights near-term priorities and longer-term initiatives. Update
 ## Active Tasks
 | ID | Title | Status | Priority | Owner | Notes |
 | --- | --- | --- | --- | --- | --- |
-| T-001 | Finalize requirements and design review | Review | P0 | Unassigned | Updated docs with decisions on Bubblewrap, Python 3.9, SQLite, and OpenAI agents—await stakeholder sign-off. |
+| T-001 | Finalize requirements and design review | Done | P0 | Unassigned | Review complete; Bubblewrap, Python 3.9, SQLite, and OpenAI decisions ratified for implementation. |
 | T-002 | Define sandbox technology stack | Done | P0 | Unassigned | Bubblewrap (`bwrap`) selected for jailed shell execution. |
 | T-003 | Draft session manager data model | Todo | P1 | Unassigned | Outline schema for sessions, users, and token usage events. |
 | T-004 | Outline CLI user journey | Todo | P1 | Unassigned | Create wireframes/flows for CLI interactions and error handling. |

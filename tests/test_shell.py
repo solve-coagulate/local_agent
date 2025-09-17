@@ -1,5 +1,6 @@
 """Tests for the Bubblewrap-backed persistent shell utility."""
 
+import shutil
 from pathlib import Path
 from uuid import uuid4
 
@@ -75,6 +76,7 @@ def test_environment_state_persists(shell: Shell) -> None:
     assert echo.stdout == "value"
 
 
+@pytest.mark.skipif(shutil.which("bwrap") is None, reason="Bubblewrap not available")
 def test_session_persists_across_instances(tmp_path: Path) -> None:
     """Creating another shell with the same session shares state."""
 

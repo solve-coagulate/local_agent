@@ -2,10 +2,10 @@
 
 This plan outlines the staged delivery of the local coding agent platform. Each phase builds on the previous one and should conclude with updated documentation and demos where applicable. Core technology choices—Bubblewrap sandboxing, Python 3.9+ services, SQLite storage, and OpenAI-powered agents—remain constant unless new evidence demands change.
 
-## Phase 0 – Planning (Current)
-- Draft foundational documents (plan, requirements, design, and task board).
-- Identify stakeholders, decision makers, and review cadence.
-- Validate that the repository structure supports future automation and testing.
+## Phase 0 – Planning (Complete)
+- Draft foundational documents (plan, requirements, design, and task board). ✅
+- Identify stakeholders, decision makers, and review cadence. ✅
+- Validate that the repository structure supports future automation and testing. ✅
 
 ## Phase 1 – Core Infrastructure
 - Implement repository bootstrapping scripts to provision a Bubblewrap (`bwrap`) jailed shell workspace per session.
