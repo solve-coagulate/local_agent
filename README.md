@@ -13,6 +13,7 @@ This repository documents the plan for building a local-first coding assistant t
 - [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md) – functional and non-functional expectations.
 - [`docs/DESIGN.md`](docs/DESIGN.md) – module-level architecture and integration notes.
 - [`docs/TASKS.md`](docs/TASKS.md) – active and upcoming tasks.
+- [`docs/AGENT_GUIDE.md`](docs/AGENT_GUIDE.md) – agent SDK usage patterns and best practices.
 
 ## Python Environment
 - Install dependencies: `pip install -r requirements.txt`.
