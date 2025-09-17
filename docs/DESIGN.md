@@ -37,6 +37,13 @@ The system is composed of several services orchestrated around session managemen
 - **Implementation Notes**: Use Bubblewrap (`bwrap`) to create process-isolated sandboxes with predefined filesystem and network policies.
 - **Open Questions**: What auditing mechanism is required to track file diffs and commands executed?
 
+### 4a. Local Shell Utility
+- **Responsibilities**: Provide a lightweight Python interface for issuing commands against the local workspace while respecting session boundaries.
+- **Key Interactions**: Serves as an adapter for higher-level services or tests that need shell semantics (e.g., `cd`, `pwd`) without bootstrapping the full session-management stack.
+- **Implementation Notes**: Launch a Bubblewrap-jailed `/bin/sh` per session (sharing processes by session identifier), stream commands through stdin, detect completion via unique sentinels, and expose structured results (`exit_code`, `stdout`, `stderr`).
+- **Concurrency**: Guard each session process with a lock so multiple threads or asyncio tasks can issue commands without corrupting state.
+- **Open Questions**: Do we need to stream output for long-running commands or surface a mechanism to terminate runaway processes?
+
 ### 5. Task Coordination Service
 - **Responsibilities**: Store task metadata, track ownership, log progress updates, and integrate with PR tooling.
 - **Key Interactions**: Syncs with `docs/TASKS.md` (initial source of truth) and exposes CRUD operations to clients.

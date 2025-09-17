@@ -10,7 +10,7 @@ This backlog highlights near-term priorities and longer-term initiatives. Update
 ## Active Tasks
 | ID | Title | Status | Priority | Owner | Notes |
 | --- | --- | --- | --- | --- | --- |
-| T-001 | Finalize requirements and design review | Review | P0 | Unassigned | Updated docs with decisions on Bubblewrap, Python 3.9, SQLite, and OpenAI agents—await stakeholder sign-off. |
+| T-001 | Finalize requirements and design review | Done | P0 | Unassigned | Review complete; Bubblewrap, Python 3.9, SQLite, and OpenAI decisions ratified for implementation. |
 | T-002 | Define sandbox technology stack | Done | P0 | Unassigned | Bubblewrap (`bwrap`) selected for jailed shell execution. |
 | T-003 | Draft session manager data model | Todo | P1 | Unassigned | Outline schema for sessions, users, and token usage events. |
 | T-004 | Outline CLI user journey | Todo | P1 | Unassigned | Create wireframes/flows for CLI interactions and error handling. |
@@ -18,7 +18,7 @@ This backlog highlights near-term priorities and longer-term initiatives. Update
 | T-006 | Evaluate analytics tooling options | Todo | P2 | Unassigned | Assess metrics, logging, and visualization stack compatibility. |
 | T-007 | Establish contribution guidelines | Todo | P2 | Unassigned | Expand README with coding standards and review process once implementation begins. |
 | T-008 | Prototype token usage reporting schema | Todo | P2 | Unassigned | Define aggregation strategy for session and task level usage data. |
-| T-009 | Implement Bubblewrap sandbox provisioning | Todo | P0 | Unassigned | Build scripts/services to launch `bwrap` sandboxes with auditing hooks. |
+| T-009 | Implement Bubblewrap sandbox provisioning | In Progress | P0 | Unassigned | Python shell wrapper now launches `bwrap`-jailed sessions; follow-up work needed for automation and auditing hooks. |
 | T-010 | Stand up SQLite-backed session store | Todo | P1 | Unassigned | Model tables for sessions, token usage, and task links with migration tooling. |
 | T-011 | Integrate OpenAI agent orchestration | Todo | P1 | Unassigned | Wire agent orchestrator to OpenAI APIs with configurable policies and logging. |
 | T-012 | Establish automated testing baseline | Todo | P0 | Unassigned | Define CI workflows and minimum coverage thresholds across services. |
